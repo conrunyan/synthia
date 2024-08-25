@@ -1,0 +1,15 @@
+Keyboard {
+    layout: horizontal;
+    background: $boost;
+    height: 10;
+    margin: 1;
+    min-width: 50;
+    padding: 1;
+}
+
+.keyboard-button {
+    height: 8;
+    margin: 1;
+    padding: 1;
+    max-width: 15;
+}
