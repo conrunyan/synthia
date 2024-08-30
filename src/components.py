@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from textual.widgets import Static, Button
+from textual.widgets import Static, Button, Select
 from textual import events
 
 from src.sound import Synth, LFOTypes
@@ -25,10 +25,32 @@ class ControlPanel(Static):
             attack=0.1,
             sustain=0,
             decay=0,
-            revery=0,
+            reverb=0,
             voices=1,
-            lfo_type=LFOTypes.SQUARE
+            lfo_type=LFOTypes.SQUARE,
         )
+
+    def update_state(self, **kwargs):
+        lfo_type = kwargs.get("lfo_type")
+        if lfo_type:
+            keys = self.query(KeyboardKey)
+            breakpoint()
+            for key in keys:
+                key.synth.set_lfo_type(lfo_type)
+
+    def compose(self):
+        lfo_types = [(name, key) for name, key in LFOTypes.__members__.items()]
+        yield Select(
+            lfo_types,
+            prompt="Synth Type",
+            value=LFOTypes.SAW_DOWN,
+            id="select-lfo-type",
+        )
+
+    def on_select_changed(self, event: Select.Changed):
+        # print(event)
+        # if event.select.id == "select-lfo-type":
+        self.update_state(lfo_type=event.value)
 
 
 class KeyboardKey(Button):

@@ -9,7 +9,6 @@ Synthia is simple sound synthesizer usable as a TUI.
   - [ ] Amplitude
   - [ ] ASDR (attack, sustain, decay, release)
 - [ ] Create some buttons for filters
-
 Stretch:
 
 - [ ] Add option to select different synth sounds (start with Sin wave)

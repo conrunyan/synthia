@@ -2,7 +2,7 @@ from pyo import Server
 from textual.app import App, ComposeResult
 from textual.widgets import Header, Footer
 
-from src.components import Keyboard
+from src.components import Keyboard, ControlPanel
 
 
 class SynthiaApp(App):
@@ -11,6 +11,7 @@ class SynthiaApp(App):
     def compose(self) -> ComposeResult:
         yield Header()
         yield Footer()
+        yield ControlPanel()
         yield Keyboard()
 
 
