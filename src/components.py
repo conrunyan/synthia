@@ -1,7 +1,34 @@
+from dataclasses import dataclass
+
 from textual.widgets import Static, Button
 from textual import events
 
-from src.sound import Synth
+from src.sound import Synth, LFOTypes
+
+
+@dataclass
+class SynthConfig:
+    amplitude: float
+    attack: float
+    sustain: float
+    decay: float
+    reverb: float
+    voices: float
+    lfo_type: LFOTypes
+
+
+class ControlPanel(Static):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.config_state = SynthConfig(
+            amplitude=10,
+            attack=0.1,
+            sustain=0,
+            decay=0,
+            revery=0,
+            voices=1,
+            lfo_type=LFOTypes.SQUARE
+        )
 
 
 class KeyboardKey(Button):

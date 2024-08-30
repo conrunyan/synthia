@@ -11,5 +11,5 @@ Keyboard {
     height: 8;
     margin: 1;
     padding: 1;
-    max-width: 15;
+    max-width: 12.5%;
 }
